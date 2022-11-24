@@ -1,0 +1,32 @@
+.left{
+    width: 100px;
+    height: 700px;
+}
+.main{
+    margin-top: 10px;
+    width: 325px;
+    height: 700px;
+}
+.main1{
+    margin-top: 10px;
+    width: 325px;
+    height: 700px;
+    margin-left: 5px;
+}
+.main2{
+    margin-top: 10px;
+    width: 325px;
+    height: 700px;
+    margin-left: 5px;
+}
+.main3{
+    margin-top: 10px;
+    width: 325px;
+    height: 700px;
+    margin-left: 5px;
+}
+.row10{
+    width: 325px;
+    height: 320px;
+    background-color: white;
+}

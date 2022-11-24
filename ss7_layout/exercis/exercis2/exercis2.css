@@ -1,0 +1,31 @@
+.header{
+     background-color: lightyellow;
+    height: 100px;
+
+}
+.center{
+    height: 700px;
+    width: 100%;
+}
+.footer{
+    background-color: #A9A9A9;
+    height: 40px;
+}
+.left {
+    width: 30%;
+    height: 700px;
+    /*
+    background-color: #42B72A;
+    */
+    float: left;
+}
+.right{
+    width: 15%;
+    height: 700px;
+    float: left;
+}
+.main{
+    width: 55%;
+    height: 700px;
+    float: left;
+}
