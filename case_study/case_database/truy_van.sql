@@ -216,10 +216,7 @@ khach_hang.ma_khach_hang  IN (
 select * from khach_hang;
 SET SQL_SAFE_UPDATES = 1;
  -- 19.	Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2020 lên gấp đôi.
-select dich_vu_di_kem.ma_dich_vu_di_kem , dich_vu_di_kem.ten_dich_vu_di_kem, dich_vu_di_kem.gia*coutn(ifnull(dich_vu_di_kem.ma_dich_vu_di_kem,0 )) as gia_tang from dich_vu_di_kem
-join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
-join hop_dong on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
-where
+
 
 
 
