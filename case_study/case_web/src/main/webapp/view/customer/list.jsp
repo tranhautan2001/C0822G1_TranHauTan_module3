@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="col-3" style="background-color: white;display: flex;justify-content: center">
-            <a  style="margin-top: 35px;font-size: 23px"> Trần Hậu Tân</a>
+            <a style="margin-top: 35px;font-size: 23px"> Trần Hậu Tân</a>
         </div>
     </div>
 </div>
@@ -96,7 +96,8 @@
             <td><c:out value="${customer.email}"/></td>
             <td><c:out value="${customer.address}"/></td>
             <td>
-                <button type="button" onclick="infoDelete('${customer.getId()}','${customer.getName()}')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" onclick="inforDelete('${customer.getId()}','${customer.getName()}')"
+                        class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Delete
                 </button>
             </td>
@@ -116,19 +117,42 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="id_customer">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <span> Bạn có muốn xoá sản phẩm </span><span id="deleteName"></span>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit"  class="btn btn-primary">Save changes</button>
-                </div>
+                <form action="/customer" method="post">
+                    <div class="modal-footer">
+                        <input type="text" hidden name="action" value="delete">
+                        <input type="text" hidden name="id_customer" id="id_customer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
+        </div>
+    <script>
+        function inforDelete(id, name) {
+            document.getElementById("id_customer").value = id;
+            document.getElementById("deleteName").value = name;
+
+        }
+    </script>
+    <script src="jquery/jquery-3.5.1.min.js"></script>
+    <script src="datatables/js/jquery.dataTables.min.js"></script>
+    <script src="datatables/js/dataTables.bootstrap5.min.js"></script>
+    <script>       /* phân trang */
+    $(document).ready(function () {
+        $('#tableCustomer').dataTable({
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 5
+        })
+    })
+    </script>
 </table>
 </body>
 </html>
