@@ -1,6 +1,7 @@
 package model;
 
 public class Calculator {
+
     public static float calculator(float stn, float sth, char operator) {
         switch (operator) {
             case '+':
