@@ -9,9 +9,9 @@ import java.math.BigDecimal;
 @WebServlet(name = "DiscorServlet" , urlPatterns = "/display")
 public class DiscountServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       String productDescription = request.getParameter("Description");
-       double listPrice = Double.parseDouble(request.getParameter("Price"));
-       double discountPercent = Double.parseDouble(request.getParameter("Percent"));
+        String productDescription = request.getParameter("Description");
+        double listPrice = Double.parseDouble(request.getParameter("Price"));
+        double discountPercent = Double.parseDouble(request.getParameter("Percent"));
         BigDecimal price = new BigDecimal(listPrice);
         BigDecimal discountAmount = new BigDecimal(listPrice* discountPercent * 0.01);
         BigDecimal discountPrice = price.subtract(discountAmount);
