@@ -10,14 +10,14 @@ import java.math.BigDecimal;
 public class DiscountServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        String productDescription = request.getParameter("Description");
-       double listPrice = Double.parseDouble(request.getParameter("price"));
+       double listPrice = Double.parseDouble(request.getParameter("Price"));
        double discountPercent = Double.parseDouble(request.getParameter("Percent"));
         BigDecimal price = new BigDecimal(listPrice);
         BigDecimal discountAmount = new BigDecimal(listPrice* discountPercent * 0.01);
         BigDecimal discountPrice = price.subtract(discountAmount);
 
         request.setAttribute("Description",productDescription);
-        request.setAttribute("price",listPrice);
+        request.setAttribute("Price",listPrice);
         request.setAttribute("Percent",discountPercent);
         request.setAttribute("discountAmount",discountAmount);
         request.setAttribute("discountPrice",discountPrice);
