@@ -84,10 +84,10 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="customer" items="${customerList}">
+    <c:forEach var="customer" items="${customerList}" varStatus="status">
         <tr>
-            <td><c:out value="${customer.id}"/></td>
-            <td><c:out value="${customer.id_customer_type}"/></td>
+            <td><c:out value="${status.count}"/></td>
+            <td><c:out value="${customer.name_customer_type}"/></td>
             <td><c:out value="${customer.name}"/></td>
             <td><c:out value="${customer.date_of_birth}"/></td>
             <td><c:out value="${customer.gender}"/></td>

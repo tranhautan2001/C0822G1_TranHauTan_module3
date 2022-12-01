@@ -80,7 +80,45 @@ To change this template use File | Settings | File Templates.
         </div>
     </div>
 </nav>
+<form method="post" action="/customer?action=create">
+    <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+        <input type="text" class="form-control" name="id_customer" placeholder="STT" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+        <select name="id_customer_type">
+            <option value="1">Diamond</option>
+            <option value="2">Platinium</option>
+            <option value="3">Gold</option>
+            <option value="4">Silver</option>
+            <option value="5">Member</option>
+        </select>
+    </div>
+    <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center ;margin-bottom: 10px">
+        <input type="text" class="form-control" name="name" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+        <input type="date" class="form-control" name="date_of_birth" placeholder="Date Of Birth" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+        <input type="text" class="form-control" name="gender"  placeholder="Gender" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+        <input type="text" class="form-control" name="id_card" placeholder="ID Card" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+        <input type="text" class="form-control" name="phone_number" placeholder="Phone Number" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+        <input type="text" class="form-control" name="email" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+        <input type="text" class="form-control" name="address" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+        <button type="submit" value="Save" class="btn btn-primary" data-bs-toggle="modal">EDIT </button>
+    </div>
 
+</form>
 </body>
 </html>
 

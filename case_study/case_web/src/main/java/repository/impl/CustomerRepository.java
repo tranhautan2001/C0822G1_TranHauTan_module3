@@ -11,7 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerRepository implements ICustomerRepository {
-       private static final String SELECT_ALL = "select * from customer";
+       private static final String SELECT_ALL = "select * from customer \n" +
+               "join customer_type on customer.id_customer_type = customer_type.id_customer_type;";
        private static final String DELETE_BY_ID = "delete from customer where id_customer = ?";
 
 
@@ -24,7 +25,6 @@ public class CustomerRepository implements ICustomerRepository {
             ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()){
                int id = resultSet.getInt("id_customer");
-               int id_customer_type = resultSet.getInt("id_customer_type");
                String name = resultSet.getString("name");
                String date_of_birth = resultSet.getString("date_of_birth");
                String gender = resultSet.getString("gender");
@@ -32,7 +32,8 @@ public class CustomerRepository implements ICustomerRepository {
                int phone_number = resultSet.getInt("phone_number");
                String email = resultSet.getString("email");
                String address = resultSet.getString("address");
-               customerList.add(new Customer(id,id_customer_type,name,date_of_birth,gender,id_card,phone_number,email,address));
+               String name_customer_type = resultSet.getString("name_customer_type");
+               customerList.add(new Customer(id,name,date_of_birth,gender,id_card,phone_number,email,address,name_customer_type));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -52,4 +53,5 @@ public class CustomerRepository implements ICustomerRepository {
        }
        return false;
     }
+
 }

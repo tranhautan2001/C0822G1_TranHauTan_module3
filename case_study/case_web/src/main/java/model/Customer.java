@@ -2,7 +2,6 @@ package model;
 
 public class Customer {
     private int id;
-    private int id_customer_type;
     private String name;
     private String date_of_birth;
     private String gender;
@@ -10,13 +9,17 @@ public class Customer {
     private int phone_number;
     private String email;
     private String address;
+    private String name_customer_type;
+    private int id_customer_type;
 
     public Customer() {
+
     }
 
-    public Customer(int id, int id_customer_type, String name, String date_of_birth, String gender, int id_card, int phone_number, String email, String address) {
+
+
+    public Customer(int id, String name, String date_of_birth, String gender, int id_card, int phone_number, String email, String address, String name_customer_type) {
         this.id = id;
-        this.id_customer_type = id_customer_type;
         this.name = name;
         this.date_of_birth = date_of_birth;
         this.gender = gender;
@@ -24,6 +27,7 @@ public class Customer {
         this.phone_number = phone_number;
         this.email = email;
         this.address = address;
+        this.name_customer_type = name_customer_type;
     }
 
     public int getId() {
@@ -32,14 +36,6 @@ public class Customer {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getId_customer_type() {
-        return id_customer_type;
-    }
-
-    public void setId_customer_type(int id_customer_type) {
-        this.id_customer_type = id_customer_type;
     }
 
     public String getName() {
@@ -54,7 +50,7 @@ public class Customer {
         return date_of_birth;
     }
 
-    public void setDate_of_name(String date_of_birth) {
+    public void setDate_of_birth(String date_of_birth) {
         this.date_of_birth = date_of_birth;
     }
 
@@ -97,4 +93,14 @@ public class Customer {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public String getName_customer_type() {
+        return name_customer_type;
+    }
+
+    public void setName_customer_type(String name_customer_type) {
+        this.name_customer_type = name_customer_type;
+    }
 }
+
+

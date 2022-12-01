@@ -66,7 +66,7 @@
 </nav>
 <h1> Add facility</h1>
 <div class="input-group flex-nowrap">
-    <input type="text" class="form-control" placeholder="SST" aria-label="Username"
+    <input type="text" class="form-control"  placeholder="SST" aria-label="Username"
            aria-describedby="addon-wrapping">
 </div>
 <div class="input-group flex-nowrap">
