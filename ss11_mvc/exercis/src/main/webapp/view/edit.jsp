@@ -9,10 +9,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Edit</title>
+    <title>Cập nhật thông tin sản phẩm</title>
 </head>
 <body>
-<h3>Chỉnh sửa sản phẩm</h3>
+<h3>Cập nhật thông tin sản phẩm</h3>
 <c:if test="${mess!=null}">
     <p>${mess}</p>
 </c:if>

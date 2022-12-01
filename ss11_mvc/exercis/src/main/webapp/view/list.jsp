@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Product List </title>
+    <title>Hiển thị danh sách sản phẩm</title>
 </head>
 <body>
 <h1> Product List</h1>

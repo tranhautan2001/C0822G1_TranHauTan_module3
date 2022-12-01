@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Xem chi tiết một sản phẩm</title>
 </head>
 <body>
 <h3>Thông tin sản phẩm</h3>

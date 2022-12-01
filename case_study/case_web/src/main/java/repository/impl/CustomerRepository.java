@@ -14,6 +14,7 @@ public class CustomerRepository implements ICustomerRepository {
        private static final String SELECT_ALL = "select * from customer \n" +
                "join customer_type on customer.id_customer_type = customer_type.id_customer_type;";
        private static final String DELETE_BY_ID = "delete from customer where id_customer = ?";
+    private static final String ADD_CUSTOMER_SQL = "insert into customer (id_customer,id_customer_type,name, date_of_birth,gender,id_card,phone_number,email,address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 
     @Override
@@ -52,6 +53,40 @@ public class CustomerRepository implements ICustomerRepository {
            e.printStackTrace();
        }
        return false;
+    }
+
+    @Override
+    public void addCustomer(Customer customer) throws SQLException {
+        System.out.println(ADD_CUSTOMER_SQL);
+        try (Connection connection = BaseRepository.getConnectDB();
+             PreparedStatement statement = connection.prepareStatement(ADD_CUSTOMER_SQL)) {
+            statement.setInt(1,customer.getId());
+            statement.setInt(2,customer.getId_customer_type());
+            statement.setString(3,customer.getName());
+            statement.setString(4,customer.getDate_of_birth());
+            statement.setString(5,customer.getGender());
+            statement.setInt(6,customer.getId_card());
+            statement.setInt(7,customer.getPhone_number());
+            statement.setString(8,customer.getEmail());
+            statement.setString(9,customer.getAddress());
+            System.out.println(statement);
+            statement.executeUpdate();
+        }
+    }
+
+    @Override
+    public boolean updateCustomer(Customer customer) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public Customer selectCustomer(int id_customer) {
+        return null;
+    }
+
+    @Override
+    public List<Customer> searchByName(String name) {
+        return null;
     }
 
 }

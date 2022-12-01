@@ -23,17 +23,36 @@ public class CustomerServlet extends HttpServlet {
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
-
         }
         switch (action) {
             case "delete":
                 deleteID(request, response);
                 break;
-            default:
+            case "create":
+                try {
+                    addCustomer(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
 
     }
 
+    private void addCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id_customer"));
+        int id_customer_type = Integer.parseInt(request.getParameter("id_customer_type"));
+        String name = request.getParameter("name");
+        String date_of_birth = request.getParameter("date_of_birth");
+        String gender = request.getParameter("gender");
+        int id_card = Integer.parseInt(request.getParameter("id_card"));
+        int phone_number = Integer.parseInt(request.getParameter("phone_number"));
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        Customer book = new Customer(id, id_customer_type, name, date_of_birth, gender, id_card, phone_number, email, address);
+        iCustomerService.addCustomer(book);
+        listCustomer(request, response);
+    }
 
 
     private void deleteID(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -20,5 +20,25 @@ public class CustomerService implements ICustomerService {
         return iCustomerRepository.delete(id_customer);
     }
 
+    @Override
+    public void addCustomer(Customer customer) throws SQLException {
+        iCustomerRepository.addCustomer(customer);
+    }
+
+    @Override
+    public boolean updateCustomer(Customer customer) throws SQLException {
+        return iCustomerRepository.updateCustomer(customer);
+    }
+
+    @Override
+    public Customer selectCustomer(int id_customer) {
+        return iCustomerRepository.selectCustomer(id_customer);
+    }
+
+    @Override
+    public List<Customer> searchByName(String name) {
+        return iCustomerRepository.searchByName(name);
+    }
+
 
 }
