@@ -35,8 +35,20 @@ public class CustomerServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "edit":
+                editCustomer(request, response);
+                break;
+
         }
 
+    }
+
+    private void editCustomer(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id_customer"));
+        int id_customer_type = Integer.parseInt(request.getParameter("id_customer_type"));
+        String name = request.getParameter("name");
+        String date_of_birth = request.getParameter("date_of_birth");
+        String gender
     }
 
     private void addCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {

@@ -18,6 +18,12 @@
     <h2>
         <a href="/user?action=create">Add New User</a>
     </h2>
+    <div>
+        <form action="/user?action=search" method="post">
+            <input type="text" name="country">
+            <button class="btn btn-primary" data-bs-toggle = "modal" data-bs-target ="#exampleModal">Seach</button>
+        </form>
+    </div>
 </center>
 <div align="center">
     <table border="1" cellpadding="5">

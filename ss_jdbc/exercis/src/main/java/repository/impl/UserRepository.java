@@ -16,6 +16,7 @@ public class UserRepository implements IUserRepository {
     private static final String SELECT_ALL_USERS = "select * from users";
     private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
     private static final String UPDATE_USERS_SQL = "update users set name = ?,email= ?, country =? where id = ?;";
+    private static final String SEARCH_USER = " select * from users where country =?";
 
     @Override
     public void insertUser(User user) throws SQLException {
@@ -48,7 +49,7 @@ public class UserRepository implements IUserRepository {
     public List<User> selectAllUsers() throws SQLException {
         List<User> users = new ArrayList<>();
         Connection connection = BaseRepository.getConnectDB();
-        PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);
+        PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS + " ORDER BY Name ASC");
         ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()) {
             int id = rs.getInt("id");
@@ -81,6 +82,24 @@ public class UserRepository implements IUserRepository {
         statement.setInt(4, user.getId());
         rowUpdated = statement.executeUpdate() > 0;
         return rowUpdated;
+    }
+
+    @Override
+    public List<User> findByCountry(String country) throws SQLException {
+        List<User> userList = new ArrayList<>();
+        Connection connection = BaseRepository.getConnectDB();
+        PreparedStatement ps = connection.prepareStatement(SEARCH_USER);
+        ps.setString(1, country);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String name = rs.getString("name");
+            String email = rs.getString("email");
+            String countryOne = rs.getString("country");
+            userList.add(new User(id, name, email, countryOne));
+
+        }
+        return userList;
     }
 
 }

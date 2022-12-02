@@ -2,23 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2523f75-2cb1-4a3a-9733-0760d71088f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../case_web/src/main/webapp/view/contract/list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../case_web/src/main/webapp/view/employee/add.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../case_web/src/main/webapp/view/employee/edit.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../case_web/src/main/webapp/view/employee/list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../case_web/src/main/webapp/view/facility/add.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../case_web/src/main/webapp/view/facility/edit.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../case_web/src/main/webapp/view/facility/list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ss8_boostrap/.idea/ss8_boostrap.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../ss8_boostrap/exercis/exercis1/demo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/src/main/webapp/view/search.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../case_web/.gradle/6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../case_web/.gradle/6.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../case_web/.gradle/6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../case_web/.gradle/6.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../case_web/.gradle/6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../case_web/.gradle/6.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../case_web/.gradle/6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../case_web/.gradle/6.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_web/.gradle/6.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../case_web/.gradle/6.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_web/.gradle/6.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../case_web/.gradle/6.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../case_web/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../case_web/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../case_web/build/libs/case_web-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/../case_web/build/libs/case_web-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_web/src/main/java/controller/CustomerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../case_web/src/main/java/controller/CustomerServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_web/src/main/java/repository/impl/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../case_web/src/main/java/repository/impl/CustomerRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../case_web/src/main/webapp/view/customer/add.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../case_web/src/main/webapp/view/customer/add.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../case_web/src/main/webapp/view/customer/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../case_web/src/main/webapp/view/customer/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/.gradle/6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/.gradle/6.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/.gradle/6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/.gradle/6.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/.gradle/6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/.gradle/6.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/.gradle/6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/.gradle/6.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/.gradle/6.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/.gradle/6.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/.gradle/6.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/.gradle/6.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/build/classes/java/main/controller/UserServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/build/classes/java/main/controller/UserServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/build/classes/java/main/repository/IUserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/build/classes/java/main/repository/IUserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/build/classes/java/main/repository/impl/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/build/classes/java/main/repository/impl/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/build/classes/java/main/service/IUserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/build/classes/java/main/service/IUserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/build/classes/java/main/service/impl/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/build/classes/java/main/service/impl/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/build/libs/exercis-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/build/libs/exercis-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/src/main/java/controller/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/src/main/java/controller/UserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/src/main/java/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/src/main/java/repository/IUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/src/main/java/repository/IUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/src/main/java/repository/impl/BaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/src/main/java/repository/impl/BaseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/src/main/java/repository/impl/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/src/main/java/repository/impl/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/src/main/java/service/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/src/main/java/service/IUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/src/main/java/service/impl/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/src/main/java/service/impl/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss_jdbc/exercis/src/main/webapp/view/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../ss_jdbc/exercis/src/main/webapp/view/list.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +59,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -54,6 +72,7 @@
       <option name="presentableId" value="Default" />
       <updated>1669645264248</updated>
       <workItem from="1669645273154" duration="21000" />
+      <workItem from="1669969408533" duration="6000" />
     </task>
     <servers />
   </component>

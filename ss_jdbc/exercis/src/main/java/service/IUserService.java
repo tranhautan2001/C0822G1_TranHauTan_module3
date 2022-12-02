@@ -14,4 +14,6 @@ public interface IUserService {
     boolean deleteUser(int id) throws SQLException;
 
     boolean updateUser(User user) throws SQLException;
+
+    List<User> findByCountry(String country) throws SQLException;
 }

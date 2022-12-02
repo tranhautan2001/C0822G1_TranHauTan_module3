@@ -15,6 +15,7 @@ public class CustomerRepository implements ICustomerRepository {
                "join customer_type on customer.id_customer_type = customer_type.id_customer_type;";
        private static final String DELETE_BY_ID = "delete from customer where id_customer = ?";
     private static final String ADD_CUSTOMER_SQL = "insert into customer (id_customer,id_customer_type,name, date_of_birth,gender,id_card,phone_number,email,address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    private static final String UPDATE_CUSTOMER_SQL = "update customer set id_customer_type =?,name =?,date_of_birth =?,gender =?,id_card =?,phone_number=?,email=?,address=? where id_customer =?;";
 
 
     @Override
@@ -76,7 +77,20 @@ public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public boolean updateCustomer(Customer customer) throws SQLException {
-        return false;
+    boolean rowUpdated = false;
+    Connection connection = BaseRepository.getConnectDB();
+    PreparedStatement statement = connection.prepareStatement(UPDATE_CUSTOMER_SQL);
+        statement.setInt(1,customer.getId_customer_type());
+        statement.setString(2,customer.getName());
+        statement.setString(3,customer.getDate_of_birth());
+        statement.setString(4,customer.getGender());
+        statement.setInt(5,customer.getId_card());
+        statement.setInt(6,customer.getPhone_number());
+        statement.setString(7,customer.getEmail());
+        statement.setString(8,customer.getAddress());
+        statement.setInt(9,customer.getId());
+        rowUpdated = statement.executeUpdate()>0;
+        return rowUpdated;
     }
 
     @Override

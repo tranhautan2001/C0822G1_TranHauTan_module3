@@ -14,9 +14,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "UserServlet" , urlPatterns = "/user")
+@WebServlet(name = "UserServlet", urlPatterns = "/user")
 public class UserServlet extends HttpServlet {
     IUserService iUserService = new UserService();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
@@ -37,24 +38,25 @@ public class UserServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
-            case "delete":
+            case "search":
                 try {
-                    deleteUser(request, response);
+                    searchUser(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
                 break;
+
         }
     }
 
-    private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        List<User> listUser = iUserService.selectAllUsers();
-        int id = Integer.parseInt(request.getParameter("id"));
-        iUserService.deleteUser(id);
-
-        request.setAttribute("listUser", listUser);
-       listUser(request, response);
+    private void searchUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        String country = request.getParameter("country");
+        List<User> userList = iUserService.findByCountry(country);
+        request.setAttribute("userList", userList);
+        RequestDispatcher rs = request.getRequestDispatcher("view/search.jsp");
+        rs.forward(request, response);
     }
+
 
     private void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -95,6 +97,16 @@ public class UserServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
+            case "delete":
+                try {
+                    deleteUser(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "search":
+                showSearchUser(request, response);
+                break;
             default:
                 try {
                     listUser(request, response);
@@ -103,6 +115,19 @@ public class UserServlet extends HttpServlet {
                 }
                 break;
         }
+    }
+
+    private void showSearchUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("view/search.jsp").forward(request, response);
+    }
+
+    private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        List<User> listUser = iUserService.selectAllUsers();
+        int id = Integer.parseInt(request.getParameter("id"));
+        iUserService.deleteUser(id);
+
+        request.setAttribute("listUser", listUser);
+        listUser(request, response);
     }
 
     private void listUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {

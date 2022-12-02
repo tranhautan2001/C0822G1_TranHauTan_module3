@@ -123,7 +123,7 @@ To change this template use File | Settings | File Templates.
         <input type="text" class="form-control" name="address" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
     </div>
     <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
-        <button type="submit" value="Save" class="btn btn-primary" data-bs-toggle="modal">EDIT </button>
+        <button type="submit" value="Save" class="btn btn-primary" data-bs-toggle="modal">ADD </button>
     </div>
 
 </form>

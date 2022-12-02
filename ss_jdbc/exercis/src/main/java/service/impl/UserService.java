@@ -35,4 +35,9 @@ IUserRepository iUserRepository = new UserRepository();
     public boolean updateUser(User user) throws SQLException {
         return iUserRepository.updateUser(user);
     }
+
+    @Override
+    public List<User> findByCountry(String country) throws SQLException {
+        return iUserRepository.findByCountry(country);
+    }
 }
