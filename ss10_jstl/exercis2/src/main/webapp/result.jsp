@@ -14,6 +14,6 @@
 <body>
 <h1>Calculator</h1>
 <h2>Result :</h2>
-<td>${stn}${op}${sth}=${rs}</td>
+<td>${secondOperand}${operator}${secondOperand}=${result}</td>
 </body>
 </html>

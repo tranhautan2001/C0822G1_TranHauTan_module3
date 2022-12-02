@@ -2,17 +2,17 @@ package model;
 
 public class Calculator {
 
-    public static float calculator(float stn, float sth, char operator) {
+    public static float calculator(float firstOperand, float secondOperand, char operator) {
         switch (operator) {
             case '+':
-                return stn + sth;
+                return firstOperand + secondOperand;
             case '-':
-                return stn - sth;
+                return firstOperand - secondOperand;
             case '*':
-                return stn * sth;
+                return firstOperand * secondOperand;
             case '/':
-                if (sth != 0)
-                    return stn / sth;
+                if (secondOperand != 0)
+                    return firstOperand / secondOperand;
                 else
                     throw new RuntimeException("không thể chia cho số 0");
             default:

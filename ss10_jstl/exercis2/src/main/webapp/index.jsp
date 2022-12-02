@@ -17,7 +17,7 @@
     <table>
       <tr>
         <td>Số Thứ nhất: </td>
-        <td><input name="stn" type="text"/></td>
+        <td><input name="firstOperand" type="text"/></td>
       </tr>
       <tr>
         <td>Phép tình: </td>
@@ -32,7 +32,7 @@
       </tr>
       <tr>
         <td>Số thứ 2: </td>
-        <td><input name="sth" type="text"/></td>
+        <td><input name="secondOperand" type="text"/></td>
       </tr>
       <tr>
         <td></td>

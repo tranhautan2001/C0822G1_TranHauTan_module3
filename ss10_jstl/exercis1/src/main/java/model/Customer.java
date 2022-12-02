@@ -2,16 +2,16 @@ package model;
 
 public class Customer {
     private String name;
-    private String date_of_birth;
+    private String dateOfBirth;
     private String address;
     private String img;
 
     public Customer() {
     }
 
-    public Customer(String name, String date_of_birth, String address, String img) {
+    public Customer(String name, String dateOfBirth, String address, String img) {
         this.name = name;
-        this.date_of_birth = date_of_birth;
+        this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.img = img;
     }
@@ -24,12 +24,12 @@ public class Customer {
         this.name = name;
     }
 
-    public String getDate_of_birth() {
-        return date_of_birth;
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setDate_of_birth(String date_of_birth) {
-        this.date_of_birth = date_of_birth;
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getAddress() {

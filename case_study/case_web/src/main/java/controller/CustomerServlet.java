@@ -74,10 +74,17 @@ public class CustomerServlet extends HttpServlet {
         }
         switch (action) {
             case "create":
+                showAddForm(request, response);
+                break;
             default:
                 listCustomer(request, response);
 
         }
+    }
+
+    private void showAddForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher rd = request.getRequestDispatcher("view/customer/add.jsp");
+        rd.forward(request,response);
     }
 
     private void listCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
