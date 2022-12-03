@@ -3,7 +3,6 @@ package controller;
 import model.Customer;
 import service.ICustomerService;
 import service.impl.CustomerService;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,9 +16,7 @@ import java.util.List;
 @WebServlet(name = "CustomerServlet", urlPatterns = "/customer")
 public class CustomerServlet extends HttpServlet {
     private ICustomerService iCustomerService = new CustomerService();
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
@@ -36,21 +33,28 @@ public class CustomerServlet extends HttpServlet {
                 }
                 break;
             case "edit":
-                editCustomer(request, response);
+                try {
+                    editCustomer(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 break;
-
         }
-
     }
-
-    private void editCustomer(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id_customer"));
+    private void editCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         int id_customer_type = Integer.parseInt(request.getParameter("id_customer_type"));
         String name = request.getParameter("name");
         String date_of_birth = request.getParameter("date_of_birth");
-        String gender
+        String gender =request.getParameter("gender");
+        int id_card = Integer.parseInt(request.getParameter("id_card"));
+        int phone_number = Integer.parseInt(request.getParameter("phone_number"));
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        Customer book = new Customer(id_customer_type,name,date_of_birth,gender,id_card,phone_number,email,address);
+        iCustomerService.updateCustomer(book);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/edit.jsp");
+        dispatcher.forward(request,response);
     }
-
     private void addCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id_customer"));
         int id_customer_type = Integer.parseInt(request.getParameter("id_customer_type"));
@@ -65,8 +69,6 @@ public class CustomerServlet extends HttpServlet {
         iCustomerService.addCustomer(book);
         listCustomer(request, response);
     }
-
-
     private void deleteID(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id_customer = Integer.parseInt(request.getParameter("id_customer"));
         boolean check = iCustomerService.delete(id_customer);
@@ -77,28 +79,33 @@ public class CustomerServlet extends HttpServlet {
         request.setAttribute(mess, mess);
         listCustomer(request, response);
     }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
-
         }
         switch (action) {
             case "create":
                 showAddForm(request, response);
                 break;
+            case "edit":
+                showEditCustomer(request, response);
+                break;
+
             default:
                 listCustomer(request, response);
-
         }
     }
-
+    private void showEditCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id_customer"));
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/edit.jsp");
+        request.setAttribute("customer", iCustomerService.selectCustomer(id));
+        dispatcher.forward(request,response);
+    }
     private void showAddForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher rd = request.getRequestDispatcher("view/customer/add.jsp");
         rd.forward(request,response);
     }
-
     private void listCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Customer> customerList = iCustomerService.selectCustomer();
         request.setAttribute("customerList", customerList);

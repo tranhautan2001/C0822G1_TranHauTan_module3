@@ -76,26 +76,49 @@ public class CustomerRepository implements ICustomerRepository {
     }
 
     @Override
-    public boolean updateCustomer(Customer customer) throws SQLException {
-    boolean rowUpdated = false;
-    Connection connection = BaseRepository.getConnectDB();
-    PreparedStatement statement = connection.prepareStatement(UPDATE_CUSTOMER_SQL);
-        statement.setInt(1,customer.getId_customer_type());
-        statement.setString(2,customer.getName());
-        statement.setString(3,customer.getDate_of_birth());
-        statement.setString(4,customer.getGender());
-        statement.setInt(5,customer.getId_card());
-        statement.setInt(6,customer.getPhone_number());
-        statement.setString(7,customer.getEmail());
-        statement.setString(8,customer.getAddress());
-        statement.setInt(9,customer.getId());
-        rowUpdated = statement.executeUpdate()>0;
+    public boolean updateCustomer(Customer customer) {
+        boolean rowUpdated = false;
+        try (Connection connection = BaseRepository.getConnectDB();
+             PreparedStatement statement = connection.prepareStatement(UPDATE_CUSTOMER_SQL)) {
+            statement.setInt(1,customer.getId_customer_type());
+            statement.setString(2,customer.getName());
+            statement.setString(3,customer.getDate_of_birth());
+            statement.setString(4,customer.getGender());
+            statement.setInt(5,customer.getId_card());
+            statement.setInt(6,customer.getPhone_number());
+            statement.setString(7,customer.getEmail());
+            statement.setString(8,customer.getAddress());
+            statement.setInt(9,customer.getId());
+            rowUpdated = statement.executeUpdate()>0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return rowUpdated;
     }
 
     @Override
     public Customer selectCustomer(int id_customer) {
-        return null;
+        Customer customer = null;
+        try (Connection connection = BaseRepository.getConnectDB();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CUSTOMER_BY_ID)) {
+            preparedStatement.setInt(1, id_customer);
+            System.out.println(preparedStatement);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                String date_of_birth = resultSet.getString("date_of_birth");
+                String gender = resultSet.getString("gender");
+                int id_card = Integer.parseInt(resultSet.getString("id_card"));
+                int phone_number = Integer.parseInt(resultSet.getString("phone_number"));
+                String email = resultSet.getString("email");
+                String address = resultSet.getString("address");
+                int id_customer_type = resultSet.getInt("id_customer_type");
+                customer = new Customer(id_customer,id_customer_type, name, date_of_birth, gender,id_card, phone_number, email, address );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return customer;
     }
 
     @Override

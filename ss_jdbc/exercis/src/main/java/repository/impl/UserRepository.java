@@ -49,7 +49,7 @@ public class UserRepository implements IUserRepository {
     public List<User> selectAllUsers() throws SQLException {
         List<User> users = new ArrayList<>();
         Connection connection = BaseRepository.getConnectDB();
-        PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS + " ORDER BY Name ASC");
+        PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS + " ORDER BY name ASC");
         ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()) {
             int id = rs.getInt("id");

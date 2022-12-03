@@ -42,6 +42,17 @@ public class Customer {
         this.address = address;
     }
 
+    public Customer(int id_customer_type, String name, String date_of_birth, String gender, int id_card, int phone_number, String email, String address) {
+        this.id_customer_type = id_customer_type;
+        this.name = name;
+        this.date_of_birth = date_of_birth;
+        this.gender = gender;
+        this.id_card = id_card;
+        this.phone_number = phone_number;
+        this.email = email;
+        this.address = address;
+    }
+
     public int getId() {
         return id;
     }
