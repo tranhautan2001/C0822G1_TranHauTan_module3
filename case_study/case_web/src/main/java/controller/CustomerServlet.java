@@ -21,27 +21,36 @@ public class CustomerServlet extends HttpServlet {
         if (action == null) {
             action = "";
         }
-        switch (action) {
-            case "delete":
-                deleteID(request, response);
-                break;
-            case "create":
-                try {
+        try {
+            switch (action) {
+                case "create":
                     addCustomer(request, response);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                break;
-            case "edit":
-                try {
-                    editCustomer(request, response);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                break;
+                    break;
+                case "delete":
+                    deleteCustomer(request, response);
+                    break;
+                case "edit":
+                    updateCustomer(request,response);
+                    break;
+                case "search":
+                    searchCustomer(request,response);
+                    break;
+            }
+
+        } catch (SQLException e) {
+            throw new ServletException(e);
         }
     }
-    private void editCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+
+    private void searchCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+        List<Customer> customers = iCustomerService.searchByName(name);
+        request.setAttribute("customerList",customers);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/list.jsp");
+        dispatcher.forward(request,response);
+    }
+
+    private void updateCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         int id_customer_type = Integer.parseInt(request.getParameter("id_customer_type"));
         String name = request.getParameter("name");
         String date_of_birth = request.getParameter("date_of_birth");
@@ -69,7 +78,7 @@ public class CustomerServlet extends HttpServlet {
         iCustomerService.addCustomer(book);
         listCustomer(request, response);
     }
-    private void deleteID(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id_customer = Integer.parseInt(request.getParameter("id_customer"));
         boolean check = iCustomerService.delete(id_customer);
         String mess = "xóa không thành công";
@@ -85,18 +94,19 @@ public class CustomerServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
+            case "delete":
+                break;
             case "create":
                 showAddForm(request, response);
                 break;
             case "edit":
-                showEditCustomer(request, response);
+                showEditForm(request, response);
                 break;
-
             default:
                 listCustomer(request, response);
         }
     }
-    private void showEditCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id_customer"));
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/edit.jsp");
         request.setAttribute("customer", iCustomerService.selectCustomer(id));
