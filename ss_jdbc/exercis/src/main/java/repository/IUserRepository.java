@@ -11,9 +11,13 @@ public interface IUserRepository {
 
     List<User> selectAllUsers() throws SQLException;
 
-    boolean deleteUser(int id) throws SQLException;
+    void deleteUser(int id) throws SQLException;
 
-    boolean updateUser(User user) throws SQLException;
+    void updateUser(User user) throws SQLException;
 
     List<User> findByCountry(String country) throws SQLException;
+
+
+
+
 }

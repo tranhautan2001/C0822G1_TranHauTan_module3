@@ -27,17 +27,18 @@ IUserRepository iUserRepository = new UserRepository();
     }
 
     @Override
-    public boolean deleteUser(int id) throws SQLException {
-        return iUserRepository.deleteUser(id);
+    public void deleteUser(int id) throws SQLException {
+        iUserRepository.deleteUser(id);
     }
 
     @Override
-    public boolean updateUser(User user) throws SQLException {
-        return iUserRepository.updateUser(user);
+    public void updateUser(User user) throws SQLException {
+        iUserRepository.updateUser(user);
     }
 
     @Override
     public List<User> findByCountry(String country) throws SQLException {
         return iUserRepository.findByCountry(country);
     }
+
 }

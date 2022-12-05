@@ -125,7 +125,6 @@ public class UserServlet extends HttpServlet {
         List<User> listUser = iUserService.selectAllUsers();
         int id = Integer.parseInt(request.getParameter("id"));
         iUserService.deleteUser(id);
-
         request.setAttribute("listUser", listUser);
         listUser(request, response);
     }
