@@ -12,7 +12,7 @@ public interface ICustomerRepository {
 
     void addCustomer(Customer customer)throws SQLException;
 
-    boolean updateCustomer(Customer customer) throws SQLException;
+    void updateCustomer(Customer customer) throws SQLException;
 
     Customer selectCustomer(int id_customer);
 

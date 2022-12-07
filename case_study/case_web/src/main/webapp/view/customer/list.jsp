@@ -71,9 +71,9 @@
     <thead>
     <tr>
         <th scope="col">STT</th>
-        <th scope="col">ID_Customer_Type</th>
+        <th scope="col">Name Customer Type</th>
         <th scope="col">Name</th>
-        <th scope="col">Date Of Brith</th>
+        <th scope="col">Date Of Birth</th>
         <th scope="col">Gender</th>
         <th scope="col">ID Card</th>
         <th scope="col">Phone Number</th>

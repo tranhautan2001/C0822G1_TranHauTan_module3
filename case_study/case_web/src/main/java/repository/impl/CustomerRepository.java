@@ -79,7 +79,7 @@ public class CustomerRepository implements ICustomerRepository {
     }
 
     @Override
-    public boolean updateCustomer(Customer customer) {
+    public void updateCustomer(Customer customer) {
         boolean rowUpdated = false;
         try (Connection connection = BaseRepository.getConnectDB();
              PreparedStatement statement = connection.prepareStatement(UPDATE_CUSTOMER_SQL)) {
@@ -96,7 +96,6 @@ public class CustomerRepository implements ICustomerRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return rowUpdated;
     }
 
     @Override
@@ -133,7 +132,7 @@ public class CustomerRepository implements ICustomerRepository {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()){
                 int id_customer = resultSet.getInt("id_customer");
-                int id_customer_type = resultSet.getInt("id_customer_type");
+                String name_customer_type = resultSet.getString("name_customer_type");
                 String nameOne = resultSet.getString("name");
                 String date_of_birth = resultSet.getString("date_of_birth");
                 String gender = resultSet.getString("gender");
@@ -141,7 +140,7 @@ public class CustomerRepository implements ICustomerRepository {
                 int phone_number = resultSet.getInt("phone_number");
                 String email = resultSet.getString("email");
                 String address = resultSet.getString("address");
-                customerList.add(new Customer(id_customer,id_customer_type,nameOne,date_of_birth,gender,id_card,phone_number,email,address));
+                customerList.add(new Customer(id_customer,name_customer_type,nameOne,date_of_birth,gender,id_card,phone_number,email,address));
             }
         } catch (SQLException e) {
             e.printStackTrace();

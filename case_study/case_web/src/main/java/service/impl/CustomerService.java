@@ -26,8 +26,8 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public boolean updateCustomer(Customer customer) throws SQLException {
-        return iCustomerRepository.updateCustomer(customer);
+    public void updateCustomer(Customer customer) throws SQLException {
+        iCustomerRepository.updateCustomer(customer);
     }
 
     @Override

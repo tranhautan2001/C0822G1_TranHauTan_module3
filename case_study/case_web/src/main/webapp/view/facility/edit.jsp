@@ -55,10 +55,10 @@
                     <a class="nav-link active" aria-current="page" href="#">Employee</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/customer">Customer</a>
+                    <a class="nav-link active" aria-current="page" href="#">Customer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Facility</a>
+                    <a class="nav-link active" aria-current="page" href="/facility">Facility</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Contract</a>
@@ -72,47 +72,56 @@
     </div>
 </nav>
 <h1> edit facility</h1>
-<div class="input-group flex-nowrap">
-    <input type="text" class="form-control" placeholder="SST" aria-label="Username"
-           aria-describedby="addon-wrapping">
+<form method="post" action="/facility?action=edit">
+    <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+        <input type="text" class="form-control" name="id_facility" placeholder="STT" aria-label="Username" aria-describedby="basic-addon1" value="<c:out value='${facility.id}'/>">
+    </div>
+<div class="container-fluid" style="width: 300px; display: flex ; justify-content: center ;margin-bottom: 10px">
+    <input type="text" class="form-control" name="name_facility" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1"  value="<c:out value='${facility.name}'/>">
 </div>
-<div class="input-group flex-nowrap">
-    <input type="text" class="form-control" placeholder="ID" aria-label="Username"
-           aria-describedby="addon-wrapping">
+<div class="container-fluid" style="width: 300px; display: flex ; justify-content: center ;margin-bottom: 10px">
+    <input type="text" class="form-control" name="area" placeholder="Area" aria-label="Username" aria-describedby="basic-addon1"  value="<c:out value='${facility.area}'/>">
 </div>
-<div class="input-group flex-nowrap">
-    <input type="text" class="form-control" placeholder="Name" aria-label="Username"
-           aria-describedby="addon-wrapping">
+<div class="container-fluid" style="width: 300px; display: flex ; justify-content: center ;margin-bottom: 10px">
+    <input type="text" class="form-control" name="cost" placeholder="Cost" aria-label="Username" aria-describedby="basic-addon1"  value="<c:out value='${facility.cost}'/>">
 </div>
-<div class="input-group flex-nowrap">
-    <input type="text" class="form-control" placeholder="Area" aria-label="Username"
-           aria-describedby="addon-wrapping">
+<div class="container-fluid" style="width: 300px; display: flex ; justify-content: center ;margin-bottom: 10px">
+    <input type="text" class="form-control" name="max_people" placeholder="Max People" aria-label="Username" aria-describedby="basic-addon1"  value="<c:out value='${facility.maxPeople}'/>">
 </div>
-<div class="input-group flex-nowrap">
-    <input type="text" class="form-control" placeholder="Cost" aria-label="Username"
-           aria-describedby="addon-wrapping">
+<div class="container-fluid" style="width: 300px; display: flex ; justify-content: center ;margin-bottom: 10px">
+    <input type="text" class="form-control" name="standard_room" placeholder="Standard room" aria-label="Username" aria-describedby="basic-addon1"  value="<c:out value='${facility.standardRoom}'/>">
 </div>
-<div class="input-group flex-nowrap">
-    <input type="text" class="form-control" placeholder="Max People" aria-label="Username"
-           aria-describedby="addon-wrapping">
+    <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center ;margin-bottom: 10px">
+        <input type="text" class="form-control" name="description_other_convenience" placeholder="Description Other Convenience" aria-label="Username" aria-describedby="basic-addon1"  value="<c:out value='${facility.descriptionOtherConvenience}'/>">
+    </div>
+<div class="container-fluid" style="width: 300px; display: flex ; justify-content: center ;margin-bottom: 10px">
+    <input type="text" class="form-control" name="pool_area" placeholder="Pool Area" aria-label="Username" aria-describedby="basic-addon1"  value="<c:out value='${facility.poolArea}'/>">
 </div>
-<div class="input-group flex-nowrap">
-    <input type="text" class="form-control" placeholder="Standard room" aria-label="Username"
-           aria-describedby="addon-wrapping">
+<div class="container-fluid" style="width: 300px; display: flex ; justify-content: center ;margin-bottom: 10px">
+    <input type="text" class="form-control" name="number_of_floors" placeholder="Number of Floors" aria-label="Username" aria-describedby="basic-addon1"  value="<c:out value='${facility.numberOfFloors}'/>">
 </div>
-<div class="input-group flex-nowrap">
-    <input type="text" class="form-control" placeholder="Pool Area" aria-label="Username"
-           aria-describedby="addon-wrapping">
-</div>
-</div>
-<div class="input-group flex-nowrap">
-    <input type="text" class="form-control" placeholder="Number of Floors" aria-label="Username"
-           aria-describedby="addon-wrapping">
-</div>
-<div class="input-group flex-nowrap">
-    <input type="text" class="form-control" placeholder="Free Facility" aria-label="Username"
-           aria-describedby="addon-wrapping">
+<div class="container-fluid" style="width: 300px; display: flex ; justify-content: center ;margin-bottom: 10px">
+    <input type="text" class="form-control" name="facility_free" placeholder="Free Facility" aria-label="Username" aria-describedby="basic-addon1"  value="<c:out value='${facility.facilityFree}'/>">
 </div>
 
+<div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+    <select name="name_facility_type">
+        <option value="1">Villa</option>
+        <option value="2">House</option>
+        <option value="3">Room</option>
+    </select>
+</div>
+<div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+    <select name="name_rent_type">
+        <option value="1">Năm</option>
+        <option value="2">Tháng</option>
+        <option value="3">Ngày</option>
+        <option value="4">Giờ</option>
+    </select>
+</div>
+<div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+    <button type="submit" value="Save" class="btn btn-primary" data-bs-toggle="modal">Update </button>
+</div>
+</form>
 </body>
 </html>

@@ -50,7 +50,7 @@
             <a class="nav-link active" aria-current="page" href="/customer">Customer</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Facility</a>
+            <a class="nav-link active" aria-current="page" href="/facility">Facility</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Contract</a>

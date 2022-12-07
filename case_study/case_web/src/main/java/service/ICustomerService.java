@@ -10,7 +10,7 @@ public interface ICustomerService {
     boolean delete(int id_customer);
     void addCustomer(Customer customer)throws SQLException;
 
-    boolean updateCustomer(Customer customer) throws SQLException;
+    void updateCustomer(Customer customer) throws SQLException;
 
     Customer selectCustomer(int id_customer);
 
