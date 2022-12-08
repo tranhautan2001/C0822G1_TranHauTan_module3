@@ -1,11 +1,4 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: ASUS
-  Date: 28/11/2022
-  Time: 10:25 SA
-  To change this template use File | Settings | File Templates.
---%>
-<%--
 Created by IntelliJ IDEA.
 User: ASUS
 Date: 28/11/2022
@@ -22,6 +15,8 @@ To change this template use File | Settings | File Templates.
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/bootstrap520/css/bootstrap.css">
+    <link rel="stylesheet" href="/datatables/css/dataTables.bootstrap5.min.css">
 </head>
 <body>
 <div class="container-fluid">
@@ -52,10 +47,10 @@ To change this template use File | Settings | File Templates.
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Employee</a>
+                    <a class="nav-link active" aria-current="page" href="/employee">Employee</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/customer">Customer</a>
+                    <a class="nav-link active" aria-current="page" href="#">Customer</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Facility</a>
@@ -64,57 +59,302 @@ To change this template use File | Settings | File Templates.
                     <a class="nav-link active" aria-current="page" href="#">Contract</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+            <form class="d-flex" action="/employee?action=search" method="post">
+                <input class="form-control me-2" name="name" type="search" placeholder="Search"
+                       aria-label="Search">
+                <button style="color: white" class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
     </div>
 </nav>
 <div class="row"></div>
 <table class="table table-striped table-bordered" id="tableCustomer">
+    <thead>
     <tr>
         <th scope="col">STT</th>
-        <th scope="col">ID</th>
         <th scope="col">Name</th>
-        <th scope="col">Date Of Brith</th>
+        <th scope="col">Date Of Birth</th>
         <th scope="col">ID_Card</th>
+        <th scope="col">Salary</th>
         <th scope="col">Phone Number</th>
         <th scope="col">Email</th>
         <th scope="col">Address</th>
+        <th scope="col">Name Position</th>
+        <th scope="col">Name EducationDegree</th>
+        <th scope="col">Name Division</th>
         <th scope="col">DELETE</th>
         <th scope="col">UPDATE</th>
     </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="employee" items="${employeeList}" varStatus="status">
     <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
-        <td>7<</td>
-        <td>8</td>
+        <td><c:out value="${status.count}"/></td>
+        <td><c:out value="${employee.name}"/></td>
+        <td><c:out value="${employee.dateOfBirth}"/></td>
+        <td><c:out value="${employee.idCard}"/></td>
+        <td><c:out value="${employee.salary}"/></td>
+        <td><c:out value="${employee.phoneNumber}"/></td>
+        <td><c:out value="${employee.email}"/></td>
+        <td><c:out value="${employee.address}"/></td>
+        <td><c:out value="${employee.namePosition}"/></td>
+        <td><c:out value="${employee.nameEducationDegree}"/></td>
+        <td><c:out value="${employee.nameDivision}"/></td>
+        <td>
+            <button type="button" onclick="inforDelete('${employee.id}','${employee.name}')"
+                    class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Delete
+            </button>
+        </td>
+        <td>
+
+            <a type="button" class="btn btn-primary "  data-bs-toggle="modal" data-bs-target="#exampleModal22" href="/employee?action=edit&id=${employee.id}" onclick="edit('${employee.id}','${employee.name}','${employee.dateOfBirth}','${employee.idCard}','${employee.salary}','${employee.phoneNumber}','${employee.email}','${employee.address}')">
+                UPDATE
+            </a>
+
+        </td>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
-        <td>7<</td>
-        <td>8</td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
-        <td>7<</td>
-        <td>8</td>
-    </tr>
+    </tbody>
+    </c:forEach>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <span> Bạn có muốn xoá sản phẩm </span><span id="deleteName"></span>
+                </div>
+                <form action="/employee" method="post">
+                    <div class="modal-footer">
+                        <input type="text" hidden name="action" value="delete">
+                        <input type="text" hidden name="id" id="id">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <button type="button "
+            class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal222" style="width: 300px; display: flex ; justify-content: center; margin-left: 700px; margin-bottom: 10px">
+        Add
+    </button>
+
+<%--    create--%>
+
+    <div class="modal fade" id="exampleModal222" tabindex="-1" aria-labelledby="exampleModalLabelxxx"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelxxx">ADD EMPLOYEE</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/employee?action=create" method="post">
+                <div class="modal-body">
+                    <span style="margin-left: 200px"  >STT</span>
+                    <div class="input-group flex-nowrap">
+                        <input type="text" class="form-control" name="id" placeholder="ID" aria-label="Username"
+                               aria-describedby="addon-wrapping">
+                    </div>
+                    <span style="margin-left: 200px">Name</span>
+                    <div class="input-group flex-nowrap">
+                        <input type="text" class="form-control" name="name" placeholder="Nhập Name" aria-label="Username"
+                               aria-describedby="addon-wrapping">
+                    </div>
+                    <span style="margin-left: 200px">Date Of Birth</span>
+                    <div class="input-group flex-nowrap">
+                        <input type="date" class="form-control" name="date_of_birth" placeholder="Nhập Date Of Birth" aria-label="Username"
+                               aria-describedby="addon-wrapping">
+                    </div>
+                    <span style="margin-left: 200px">ID Card</span>
+                    <div class="input-group flex-nowrap">
+                        <input type="text" class="form-control" name="id_card" placeholder="Nhập ID Card" aria-label="Username"
+                               aria-describedby="addon-wrapping">
+                    </div>
+                    <span style="margin-left: 200px">Salary</span>
+                    <div class="input-group flex-nowrap">
+                        <input type="text" class="form-control" name="salary" placeholder="Nhập Salary" aria-label="Username"
+                               aria-describedby="addon-wrapping">
+                    </div>
+                    <span style="margin-left: 200px">Phone Number</span>
+                    <div class="input-group flex-nowrap">
+                        <input type="text" class="form-control" name="phone_number" placeholder="Nhập Phone Number" aria-label="Username"
+                               aria-describedby="addon-wrapping">
+                    </div>
+                    <span style="margin-left: 200px">Email</span>
+                    <div class="input-group flex-nowrap">
+                        <input type="text" class="form-control" name="email" placeholder="Nhập Email" aria-label="Username"
+                               aria-describedby="addon-wrapping">
+                    </div>
+                    <span style="margin-left: 200px">Address</span>
+                    <div class="input-group flex-nowrap">
+                        <input type="text" class="form-control" name="address" placeholder="Nhập Address" aria-label="Username"
+                               aria-describedby="addon-wrapping">
+                    </div>
+                    <span style="margin-left: 180px">Name Position</span>
+                    <div class="container-fluid"
+                         style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+                        <select name="name_position">
+                            <option value="1">Lễ tân</option>
+                            <option value="2">Phục Vụ</option>
+                            <option value="3">Chuyên Viên</option>
+                            <option value="4">Giám Sát</option>
+                            <option value="5">Quản Lý</option>
+                            <option value="6">Giám Đôc</option>
+                        </select>
+                    </div>
+                    <span style="margin-left: 160px">Name EducationDegree</span>
+                    <div class="container-fluid"
+                         style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+                        <select name="name_education_degree">
+                            <option value="1">Trung Cấp</option>
+                            <option value="2">Cao Đẳng</option>
+                            <option value="3">Đại Học</option>
+                            <option value="4">Sau Đại Học</option>
+                        </select>
+                    </div>
+                    <span style="margin-left: 180px">Name Division</span>
+                    <div class="container-fluid"
+                         style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+                        <select name="name_division">
+                            <option value="1">Sale - Marketing</option>
+                            <option value="2">Hành Chính</option>
+                            <option value="3">Phục Vụ</option>
+                            <option value="4">Quản Lý</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<%--    edit--%>
+
+    <div class="modal fade" id="exampleModal22" tabindex="-1" aria-labelledby="exampleModalLabelxx"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelxx">EDIT EMPLOYEE</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/employee?action=edit" method="post">
+                    <div class="modal-body">
+                        <span style="margin-left: 200px"  >STT</span>
+                        <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+                            <input type="text" class="form-control" id="idE" name="id" placeholder="STT" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <span style="margin-left: 200px">Name</span>
+                        <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" aria-describedby="basic-addon1">
+                        </div>
+                        <span style="margin-left: 200px">Date Of Birth</span>
+                        <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+                            <input type="text" class="form-control" id="dateOfBirth" name="date_of_birth" placeholder="date_of_birth" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <span style="margin-left: 200px">ID Card</span>
+                        <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+                            <input type="text" class="form-control" id="idCard" name="id_card" placeholder="id_card" aria-label="Username" aria-describedby="basic-addon1" >
+                        </div>
+                        <span style="margin-left: 200px">Salary</span>
+                        <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+                            <input type="text" class="form-control" id="salary" name="salary" placeholder="salary" aria-label="Username" aria-describedby="basic-addon1" >
+                        </div>
+                        <span style="margin-left: 200px">Phone Number</span>
+                        <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+                            <input type="text" class="form-control" id="phoneNumber" name="phone_number" placeholder="phone_number" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <span style="margin-left: 200px">Email</span>
+                        <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="email" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <span style="margin-left: 200px">Address</span>
+                        <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+                            <input type="text" class="form-control" id="address" name="address" placeholder="address" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <span style="margin-left: 180px">Name Position</span>
+                        <div class="container-fluid"
+                             style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+                            <select name="name_position">
+                                <option value="1">Lễ tân</option>
+                                <option value="2">Phục Vụ</option>
+                                <option value="3">Chuyên Viên</option>
+                                <option value="4">Giám Sát</option>
+                                <option value="5">Quản Lý</option>
+                                <option value="6">Giám Đôc</option>
+                            </select>
+                        </div>
+                        <span style="margin-left: 160px">Name EducationDegree</span>
+                        <div class="container-fluid"
+                             style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+                            <select name="name_education_degree">
+                                <option value="1">Trung Cấp</option>
+                                <option value="2">Cao Đẳng</option>
+                                <option value="3">Đại Học</option>
+                                <option value="4">Sau Đại Học</option>
+                            </select>
+                        </div>
+                        <span style="margin-left: 180px">Name Division</span>
+                        <div class="container-fluid"
+                             style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+                            <select name="name_division">
+                                <option value="1">Sale - Marketing</option>
+                                <option value="2">Hành Chính</option>
+                                <option value="3">Phục Vụ</option>
+                                <option value="4">Quản Lý</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function inforDelete(id, name) {
+            document.getElementById("id").value = id;
+            document.getElementById("deleteName").value = name;
+
+        }
+    </script>
+    <script src="jquery/jquery-3.5.1.min.js"></script>
+    <script src="datatables/js/jquery.dataTables.min.js"></script>
+    <script src="datatables/js/dataTables.bootstrap5.min.js"></script>
+    <script>       /* phân trang */
+    $(document).ready(function () {
+        $('#tableCustomer').dataTable({
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 3
+        })
+    })
+    </script>
+    <script>
+        function edit(id, name, dateOfBirth, idCard,salary,phoneNumber,email,address) {
+            document.getElementById("idE").value=id;
+            document.getElementById("name").value=name;
+            document.getElementById("dateOfBirth").value=dateOfBirth;
+            document.getElementById("idCard").value=idCard;
+            document.getElementById("salary").value=salary;
+            document.getElementById("phoneNumber").value=phoneNumber;
+            document.getElementById("email").value=email;
+            document.getElementById("address").value=address;
+
+        }
+    </script>
 </table>
 </body>
 </html>

@@ -167,8 +167,6 @@ public class FacilityServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "delete":
-                break;
             case "createHouse":
                showAddHouse(request, response);
                 break;
